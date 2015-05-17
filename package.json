@@ -1,6 +1,6 @@
 {
   "name": "gh-user",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Get user info from a GitHub username",
   "license": "MIT",
   "repository": "sindresorhus/gh-user",
