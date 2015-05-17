@@ -1,0 +1,34 @@
+{
+  "name": "gh-user",
+  "version": "0.0.0",
+  "description": "Get user info from a GitHub username",
+  "license": "MIT",
+  "repository": "sindresorhus/gh-user",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "github",
+    "gh",
+    "user",
+    "username",
+    "info"
+  ],
+  "dependencies": {
+    "gh-got": "^1.0.3"
+  },
+  "devDependencies": {
+    "ava": "0.0.4"
+  }
+}
