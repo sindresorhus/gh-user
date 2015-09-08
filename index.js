@@ -18,12 +18,16 @@ module.exports = function (username, token) {
 
 		delete ret.gravatar_id;
 		delete ret.bio;
-		Object.keys(res.headers).forEach(function(k) {
-			if (k.indexOf(prefix) === 0) {
+		Object.keys(res.headers)
+			.filter(isPrefixed.bind(this, prefix))
+			.forEach(function(k) {
 				ratelimit[k.slice(prefix.length)] = parseInt(res.headers[k], 10);
-			}
 		});
 		Object.defineProperty(ret, 'ratelimit', {value: ratelimit});
 		return ret;
 	});
 };
+
+function isPrefixed(prefix, str) {
+	return !str.indexOf(prefix);
+}
