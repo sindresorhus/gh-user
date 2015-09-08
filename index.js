@@ -19,7 +19,7 @@ module.exports = function (username, token) {
 		delete ret.gravatar_id;
 		delete ret.bio;
 		Object.keys(res.headers)
-			.filter(isPrefixed.bind(this, prefix))
+			.filter(isPrefixed.bind(null, prefix))
 			.forEach(function(k) {
 				ratelimit[k.slice(prefix.length)] = parseInt(res.headers[k], 10);
 		});
