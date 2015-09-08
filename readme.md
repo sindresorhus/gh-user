@@ -35,7 +35,7 @@ GitHub username.
 
 #### token
 
-Type: `string`
+Type: `string`  
 
 GitHub [personal access token](https://github.com/settings/tokens/new).
 
@@ -46,6 +46,7 @@ GitHub [personal access token](https://github.com/settings/tokens/new).
 Type: `object`
 
 Various [user info](https://developer.github.com/v3/users/#response).
+
 
 ## License
 

@@ -1,6 +1,6 @@
 'use strict';
-var ghUser = require('./');
 var test = require('ava');
+var ghUser = require('./');
 
 test('user exists', function (t) {
 	return ghUser('sindresorhus').then(function (user) {

@@ -15,6 +15,6 @@ module.exports = function (username, token) {
 	}).then(function(res) {
 		delete res.body.gravatar_id;
 		delete res.body.bio;
-    return res.body;
+		return res.body;
 	});
 };
