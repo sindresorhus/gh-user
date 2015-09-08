@@ -26,15 +26,15 @@ ghUser('sindresorhus').then(function (user) {
 	//=> 1441694559
 	// timestamp in seconds of the github server
 
-	console.log(user.rateLimit['remaining']);
+	console.log(user.rateLimit.remaining);
 	//=> 22
 	// remaining queries until 'reset' time
 
-	console.log(user.rateLimit['reset']);
+	console.log(user.rateLimit.reset);
 	//=> 1441698880
 	// timestamp in seconds when 'remaining' will be reset to 'limit'
 
-	console.log(user.rateLimit['limit']);
+	console.log(user.rateLimit.limit);
 	//=> 60
 	// number of queries per time period (between resets)
 });
