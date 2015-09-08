@@ -1,25 +1,10 @@
 'use strict';
-var ghUser = require('./'), test = require('ava');
+var ghUser = require('./');
+var test = require('ava');
 
 test('user exists', function (t) {
 	return ghUser('sindresorhus').then(function (user) {
 		t.is(user.login, 'sindresorhus');
-	});
-});
-
-test('user exists, got headers', function (t) {
-  t.plan(2);
-	return ghUser('sindresorhus', {headers:true}).then(function (data) {
-		t.is(data.user.login, 'sindresorhus');
-    t.is(data.headers.status, '200 OK');
-	});
-});
-
-test('user exists, got res', function (t) {
-  t.plan(2);
-	return ghUser('sindresorhus', {res:true}).then(function (data) {
-		t.is(data.user.login, 'sindresorhus');
-    t.is(data.res.httpVersion, '1.1');
 	});
 });
 
