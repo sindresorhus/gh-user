@@ -12,9 +12,9 @@ module.exports = function (username, token) {
 		headers: {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
-	}).then(function(res) {
-		delete res.body.gravatar_id;
-		delete res.body.bio;
-		return res.body;
+	}).then(function (result) {
+		delete result.body.gravatar_id;
+		delete result.body.bio;
+		return result.body;
 	});
 };
