@@ -1,36 +1,36 @@
 'use strict';
-var ghGot = require('gh-got');
+var ghGot = require('gh-got'), Promise = require('pinkie-promise');
 
-module.exports = function (username, token, cb) {
-	if (typeof username !== 'string') {
-		throw new Error('`username` required');
+module.exports = function (username, options, token) {
+	if (typeof username !== 'string' || !username) {
+		return Promise.reject(new Error('`username` required'));
 	}
 
-	if (typeof token === 'function') {
-		cb = token;
-		token = null;
-	}
+  if (typeof token === 'undefined' && typeof options === 'string') {
+    token = options;
+    options = {};
+  } else if (typeof options === 'undefined') {
+    options = {};
+  } else if (typeof options !== 'object') {
+		return Promise.reject(new Error('`options` must be an object if provided'));
+  }
 
-	ghGot('users/' + username, {
+	return ghGot('users/' + username, {
 		token: token,
 		headers: {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
-	}, function (err, data) {
-		if (err && err.code === 404) {
-			cb(new Error('User `' + username + '` doesn\'t exist'));
-			return;
-		}
+	}).then(function(res) {
+    var ret;
+		delete res.body.gravatar_id;
+		delete res.body.bio;
+    if (options.res) {
+      return {user:res.body, res:res};
+    }
 
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		// remove deprecated props
-		delete data.gravatar_id;
-		delete data.bio;
-
-		cb(null, data);
+    if (options.headers) {
+      return {user:res.body, headers:res.headers};
+    }
+    return res.body;
 	});
 };

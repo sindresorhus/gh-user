@@ -15,7 +15,7 @@ $ npm install --save gh-user
 ```js
 var ghUser = require('gh-user');
 
-ghUser('sindresorhus', function (err, user) {
+ghUser('sindresorhus').then(function (user) {
 	console.log(user);
 	//=> { login: 'sindresorhus', id: 170270, ... }
 });
@@ -24,22 +24,33 @@ ghUser('sindresorhus', function (err, user) {
 
 ## API
 
-### ghUser(username, [token], callback)
+### ghUser(username, [options], [token])
 
 #### username
 
-*Required*  
+*Required*
 Type: `string`
 
 GitHub username.
 
+#### options
+
+Type: `object`
+
+Passing an object with keys `res` or `headers` set to true will return
+an object with the keys `user` for the user object and either `res` or
+`headers` for the full res response or just the headers respectively.
+
 #### token
 
-Type: `string`  
+Type: `string`
 
 GitHub [personal access token](https://github.com/settings/tokens/new).
 
-#### callback(err, user)
+You can pass it as the second argument if you don't want to specify
+any options.
+
+#### Promise
 
 ##### user
 
@@ -47,6 +58,9 @@ Type: `object`
 
 Various [user info](https://developer.github.com/v3/users/#response).
 
+If an option argument was used with either `res` or `headers` key
+set to true, the user object will be found in the responses `user` key
+instead of being available directly.
 
 ## License
 
