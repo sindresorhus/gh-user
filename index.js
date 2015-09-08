@@ -13,22 +13,19 @@ module.exports = function (username, token) {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
 	}).then(function (result) {
-		var ratelimit = {'github-time': new Date(result.headers.date).valueOf() / 1000};
+		var rateLimit = {'github-time': new Date(result.headers.date).getTime() / 1000};
 		var ret = result.body;
 		var prefix = 'x-ratelimit-';
 
 		delete ret.gravatar_id;
 		delete ret.bio;
 		Object.keys(result.headers)
-			.filter(isPrefixed.bind(null, prefix))
 			.forEach(function (k) {
-				ratelimit[k.slice(prefix.length)] = parseInt(result.headers[k], 10);
+				if (!k.indexOf(prefix)) {
+					rateLimit[k.slice(prefix.length)] = parseInt(result.headers[k], 10);
+				}
 			});
-		Object.defineProperty(ret, 'ratelimit', {value: ratelimit});
+		Object.defineProperty(ret, 'rateLimit', {value: rateLimit});
 		return ret;
 	});
 };
-
-function isPrefixed(prefix, str) {
-	return !str.indexOf(prefix);
-}

@@ -19,22 +19,22 @@ ghUser('sindresorhus').then(function (user) {
 	console.log(user);
 	//=> { login: 'sindresorhus', id: 170270, ... }
 
-	// The ratelimit property is neither configurable nor enumerable
+	// The rateLimit property is neither configurable nor enumerable
 	// and doesn't clobber the user object.
   // You can still access its properties as following:
-	console.log(user.ratelimit['github-time']);
+	console.log(user.rateLimit['github-time']);
 	//=> 1441694559
 	// timestamp in seconds of the github server
 
-	console.log(user.ratelimit['remaining']);
+	console.log(user.rateLimit['remaining']);
 	//=> 22
 	// remaining queries until 'reset' time
 
-	console.log(user.ratelimit['reset']);
+	console.log(user.rateLimit['reset']);
 	//=> 1441698880
 	// timestamp in seconds when 'remaining' will be reset to 'limit'
 
-	console.log(user.ratelimit['limit']);
+	console.log(user.rateLimit['limit']);
 	//=> 60
 	// number of queries per time period (between resets)
 });
