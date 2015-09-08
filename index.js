@@ -12,17 +12,18 @@ module.exports = function (username, token) {
 		headers: {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
-	}).then(function(result) {
-		var ratelimit = {'github-time': new Date(result.headers.date).valueOf()/1000},
-			ret = result.body, prefix = 'x-ratelimit-';
+	}).then(function (result) {
+		var ratelimit = {'github-time': new Date(result.headers.date).valueOf() / 1000};
+		var ret = result.body;
+		var prefix = 'x-ratelimit-';
 
 		delete ret.gravatar_id;
 		delete ret.bio;
 		Object.keys(result.headers)
 			.filter(isPrefixed.bind(null, prefix))
-			.forEach(function(k) {
+			.forEach(function (k) {
 				ratelimit[k.slice(prefix.length)] = parseInt(result.headers[k], 10);
-		});
+			});
 		Object.defineProperty(ret, 'ratelimit', {value: ratelimit});
 		return ret;
 	});
