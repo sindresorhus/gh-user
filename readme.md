@@ -47,6 +47,7 @@ Type: `object`
 
 Various [user info](https://developer.github.com/v3/users/#response).
 
+The rate limit info is exposed as a hidden property on the user object.
 
 ## License
 

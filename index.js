@@ -13,8 +13,15 @@ module.exports = function (username, token) {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
 	}).then(function(res) {
-		delete res.body.gravatar_id;
-		delete res.body.bio;
-		return res.body;
+		var ret = res.body, ratelimit = {}, prefix = 'x-ratelimit-';
+		delete ret.gravatar_id;
+		delete ret.bio;
+		Object.keys(res.headers).forEach(function(k) {
+			if (k.indexOf(prefix) === 0) {
+				ratelimit[k.slice(prefix.length)] = parseInt(res.headers[k], 10);
+			}
+		});
+		Object.defineProperty(ret, 'ratelimit', {value: ratelimit});
+		return ret;
 	});
 };
