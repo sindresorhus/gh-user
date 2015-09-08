@@ -13,7 +13,9 @@ module.exports = function (username, token) {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
 	}).then(function(res) {
-		var ret = res.body, ratelimit = {}, prefix = 'x-ratelimit-';
+		var ratelimit = {'github-time': new Date(res.headers.date).valueOf()/1000},
+			ret = res.body, prefix = 'x-ratelimit-';
+
 		delete ret.gravatar_id;
 		delete ret.bio;
 		Object.keys(res.headers).forEach(function(k) {
