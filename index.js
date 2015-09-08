@@ -13,8 +13,19 @@ module.exports = function (username, token) {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
 	}).then(function (result) {
-		delete result.body.gravatar_id;
-		delete result.body.bio;
-		return result.body;
+		var rateLimit = {'github-time': new Date(result.headers.date).getTime() / 1000};
+		var ret = result.body;
+		var prefix = 'x-ratelimit-';
+
+		delete ret.gravatar_id;
+		delete ret.bio;
+		Object.keys(result.headers)
+			.forEach(function (k) {
+				if (!k.indexOf(prefix)) {
+					rateLimit[k.slice(prefix.length)] = parseInt(result.headers[k], 10);
+				}
+			});
+		Object.defineProperty(ret, 'rateLimit', {value: rateLimit});
+		return ret;
 	});
 };

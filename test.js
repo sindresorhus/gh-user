@@ -5,6 +5,7 @@ var ghUser = require('./');
 test('user exists', function (t) {
 	return ghUser('sindresorhus').then(function (user) {
 		t.is(user.login, 'sindresorhus');
+		t.true(user.rateLimit.limit > 50);
 	});
 });
 
