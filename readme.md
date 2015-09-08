@@ -15,7 +15,7 @@ $ npm install --save gh-user
 ```js
 var ghUser = require('gh-user');
 
-ghUser('sindresorhus', function (err, user) {
+ghUser('sindresorhus').then(function (user) {
 	console.log(user);
 	//=> { login: 'sindresorhus', id: 170270, ... }
 });
@@ -24,7 +24,7 @@ ghUser('sindresorhus', function (err, user) {
 
 ## API
 
-### ghUser(username, [token], callback)
+### ghUser(username, [token])
 
 #### username
 
@@ -39,7 +39,7 @@ Type: `string`
 
 GitHub [personal access token](https://github.com/settings/tokens/new).
 
-#### callback(err, user)
+#### Promise
 
 ##### user
 

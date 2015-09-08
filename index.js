@@ -1,36 +1,20 @@
 'use strict';
 var ghGot = require('gh-got');
+var Promise = require('pinkie-promise');
 
-module.exports = function (username, token, cb) {
-	if (typeof username !== 'string') {
-		throw new Error('`username` required');
+module.exports = function (username, token) {
+	if (typeof username !== 'string' || !username) {
+		return Promise.reject(new Error('`username` required'));
 	}
 
-	if (typeof token === 'function') {
-		cb = token;
-		token = null;
-	}
-
-	ghGot('users/' + username, {
+	return ghGot('users/' + username, {
 		token: token,
 		headers: {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
-	}, function (err, data) {
-		if (err && err.code === 404) {
-			cb(new Error('User `' + username + '` doesn\'t exist'));
-			return;
-		}
-
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		// remove deprecated props
-		delete data.gravatar_id;
-		delete data.bio;
-
-		cb(null, data);
+	}).then(function(res) {
+		delete res.body.gravatar_id;
+		delete res.body.bio;
+		return res.body;
 	});
 };
