@@ -3,8 +3,10 @@ var test = require('ava');
 var ghUser = require('./');
 
 test('user exists', function (t) {
+	t.plan(2);
 	return ghUser('sindresorhus').then(function (user) {
 		t.is(user.login, 'sindresorhus');
+		t.true(user.ratelimit.limit > 50);
 	});
 });
 
