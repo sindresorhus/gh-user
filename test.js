@@ -1,27 +1,20 @@
-'use strict';
-var test = require('ava');
-var ghUser = require('./');
+import test from 'ava';
+import fn from './';
 
-test('user exists', function (t) {
-	return ghUser('sindresorhus').then(function (user) {
-		t.is(user.login, 'sindresorhus');
-	});
+test('user exists', async t => {
+	const user = await fn('sindresorhus');
+
+	t.is(user.login, 'sindresorhus');
 });
 
-test('user doesn\'t exist', function (t) {
-	return ghUser('sindr555esorhus').catch(function (err) {
-		t.is(err.message, 'Response code 404 (Not Found)');
-	});
+test('user doesn\'t exist', async t => {
+	await t.throws(fn('sindr555esorhus'), 'Response code 404 (Not Found)');
 });
 
-test('no username given (no arg)', function (t) {
-	return ghUser().catch(function (err) {
-		t.is(err.message, '`username` required');
-	});
+test('no username given (no arg)', async t => {
+	await t.throws(fn(), '`username` required');
 });
 
-test('no username given (empty string)', function (t) {
-	return ghUser('').catch(function (err) {
-		t.is(err.message, '`username` required');
-	});
+test('no username given (empty string)', async t => {
+	await t.throws(fn(''), '`username` required');
 });

@@ -13,9 +13,9 @@ $ npm install --save gh-user
 ## Usage
 
 ```js
-var ghUser = require('gh-user');
+const ghUser = require('gh-user');
 
-ghUser('sindresorhus').then(function (user) {
+ghUser('sindresorhus').then(user => {
 	console.log(user);
 	//=> { login: 'sindresorhus', id: 170270, ... }
 });
