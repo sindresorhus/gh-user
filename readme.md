@@ -17,7 +17,7 @@ const ghUser = require('gh-user');
 
 ghUser('sindresorhus').then(user => {
 	console.log(user);
-	//=> { login: 'sindresorhus', id: 170270, ... }
+	//=> {login: 'sindresorhus', id: 170270, ...}
 });
 ```
 
@@ -28,14 +28,13 @@ ghUser('sindresorhus').then(user => {
 
 #### username
 
-*Required*  
 Type: `string`
 
 GitHub username.
 
 #### token
 
-Type: `string`  
+Type: `string`
 
 GitHub [personal access token](https://github.com/settings/tokens/new).
 
@@ -43,11 +42,11 @@ GitHub [personal access token](https://github.com/settings/tokens/new).
 
 ##### user
 
-Type: `object`
+Type: `Object`
 
 Various [user info](https://developer.github.com/v3/users/#response).
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
