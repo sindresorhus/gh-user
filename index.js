@@ -14,7 +14,6 @@ module.exports = function (username, token) {
 		}
 	}).then(function (result) {
 		delete result.body.gravatar_id;
-		delete result.body.bio;
 		return result.body;
 	});
 };
