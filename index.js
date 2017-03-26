@@ -1,18 +1,17 @@
 'use strict';
-var ghGot = require('gh-got');
-var Promise = require('pinkie-promise');
+const ghGot = require('gh-got');
 
-module.exports = function (username, token) {
+module.exports = (username, token) => {
 	if (typeof username !== 'string' || !username) {
 		return Promise.reject(new Error('`username` required'));
 	}
 
-	return ghGot('users/' + username, {
-		token: token,
+	return ghGot(`users/${username}`, {
+		token,
 		headers: {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
-	}).then(function (result) {
+	}).then(result => {
 		delete result.body.gravatar_id;
 		return result.body;
 	});

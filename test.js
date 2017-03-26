@@ -1,5 +1,5 @@
 import test from 'ava';
-import m from './';
+import m from '.';
 
 test('user exists', async t => {
 	const user = await m('sindresorhus');

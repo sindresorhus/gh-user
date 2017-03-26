@@ -10,7 +10,7 @@
     "url": "sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && ava"
@@ -23,11 +23,11 @@
     "gh",
     "user",
     "username",
-    "info"
+    "info",
+    "api"
   ],
   "dependencies": {
-    "gh-got": "^2.0.0",
-    "pinkie-promise": "^2.0.0"
+    "gh-got": "^5.0.0"
   },
   "devDependencies": {
     "ava": "*",
