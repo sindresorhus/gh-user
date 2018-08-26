@@ -1,18 +1,29 @@
 'use strict';
 const ghGot = require('gh-got');
 
-module.exports = (username, token) => {
+module.exports = async (username, options) => {
 	if (typeof username !== 'string' || !username) {
-		return Promise.reject(new Error('`username` required'));
+		throw new Error('`username` required');
 	}
 
-	return ghGot(`users/${username}`, {
-		token,
+	const defaultOptions = {
 		headers: {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
-	}).then(result => {
-		delete result.body.gravatar_id;
-		return result.body;
-	});
+	};
+
+	if (!options) {
+		options = {};
+	}
+
+	if (typeof options === 'string') {
+		options = {token: options};
+	}
+	if (typeof options !== 'object') {
+		throw new TypeError('`options` should be an object or a string representing the token');
+	}
+
+	const result = await ghGot(`users/${username}`, {...defaultOptions, ...options});
+	delete result.body.gravatar_id;
+	return result.body;
 };
