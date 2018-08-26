@@ -7,7 +7,7 @@ test('user exists', async t => {
 });
 
 test('user doesn\'t exist', async t => {
-	await t.throws(m('sindr555esorhus'), 'Response code 404 (Not Found)');
+	await t.throws(m('sindr555esorhus'), 'Not Found (404)');
 });
 
 test('no username given (no arg)', async t => {

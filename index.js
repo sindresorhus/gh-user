@@ -1,18 +1,17 @@
 'use strict';
 const ghGot = require('gh-got');
 
-module.exports = (username, token) => {
+module.exports = async (username, token) => {
 	if (typeof username !== 'string' || !username) {
-		return Promise.reject(new Error('`username` required'));
+		throw new Error('`username` required');
 	}
 
-	return ghGot(`users/${username}`, {
+	const result = await ghGot(`users/${username}`, {
 		token,
 		headers: {
 			'user-agent': 'https://github.com/sindresorhus/gh-user'
 		}
-	}).then(result => {
-		delete result.body.gravatar_id;
-		return result.body;
 	});
+	delete result.body.gravatar_id;
+	return result.body;
 };
