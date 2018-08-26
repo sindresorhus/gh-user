@@ -17,3 +17,7 @@ test('no username given (no arg)', async t => {
 test('no username given (empty string)', async t => {
 	await t.throws(m(''), '`username` required');
 });
+
+test('options given (neither string nor object)', async t => {
+	await t.throws(m('sindresorhus', 55), '`options` should be an object or a string representing the token');
+});
