@@ -24,7 +24,7 @@ ghUser('sindresorhus').then(user => {
 
 ## API
 
-### ghUser(username, [token])
+### ghUser(username, [options])
 
 #### username
 
@@ -32,11 +32,17 @@ Type: `string`
 
 GitHub username.
 
-#### token
+#### options
 
-Type: `string`
+Type: `object`
 
-GitHub [personal access token](https://github.com/settings/tokens/new).
+Any [gh-got](https://github.com/sindresorhus/gh-got#api) option. To use a GitHub [personal access token](https://github.com/settings/tokens/new) for example, pass
+
+```js
+{
+	token: 'YOUR-TOKEN'
+}
+```
 
 #### Promise
 
