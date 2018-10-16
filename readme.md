@@ -26,6 +26,8 @@ const ghUser = require('gh-user');
 
 ### ghUser(username, [options])
 
+Returns a `Promise<Object>` with various [user info](https://developer.github.com/v3/users/#response).
+
 #### username
 
 Type: `string`
@@ -36,21 +38,13 @@ GitHub username.
 
 Type: `Object`
 
-Any [`gh-got`](https://github.com/sindresorhus/gh-got#api) option. To use a GitHub [personal access token](https://github.com/settings/tokens/new) for example, pass in:
+Any [`gh-got`](https://github.com/sindresorhus/gh-got#api) option. To use a GitHub [personal access token](https://github.com/settings/tokens/new), for example, pass in:
 
 ```js
 {
 	token: 'YOUR-TOKEN'
 }
 ```
-
-#### Promise
-
-##### user
-
-Type: `Object`
-
-Various [user info](https://developer.github.com/v3/users/#response).
 
 
 ## License
