@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save gh-user
+$ npm install gh-user
 ```
 
 
@@ -15,10 +15,10 @@ $ npm install --save gh-user
 ```js
 const ghUser = require('gh-user');
 
-ghUser('sindresorhus').then(user => {
-	console.log(user);
-	//=> {login: 'sindresorhus', id: 170270, ...}
-});
+(async () => {
+	console.log(await ghUser('sindresorhus'));
+	//=> {login: 'sindresorhus', id: 170270, …}
+})();
 ```
 
 
@@ -34,9 +34,9 @@ GitHub username.
 
 #### options
 
-Type: `object`
+Type: `Object`
 
-Any [gh-got](https://github.com/sindresorhus/gh-got#api) option. To use a GitHub [personal access token](https://github.com/settings/tokens/new) for example, pass
+Any [`gh-got`](https://github.com/sindresorhus/gh-got#api) option. To use a GitHub [personal access token](https://github.com/settings/tokens/new) for example, pass in:
 
 ```js
 {

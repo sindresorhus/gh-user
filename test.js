@@ -1,37 +1,37 @@
 import test from 'ava';
-import m from '.';
+import ghUser from '.';
 
 test('user exists', async t => {
-	const user = await m('sindresorhus');
+	const user = await ghUser('sindresorhus');
 	t.is(user.login, 'sindresorhus');
 });
 
 test('user exists (empty options object)', async t => {
-	const user = await m('sindresorhus', {});
+	const user = await ghUser('sindresorhus', {});
 	t.is(user.login, 'sindresorhus');
 });
 
 test('user exists (gh-got options object)', async t => {
-	const user = await m('sindresorhus', {retry: 5});
+	const user = await ghUser('sindresorhus', {retry: 5});
 	t.is(user.login, 'sindresorhus');
 });
 
 test('user doesn\'t exist', async t => {
-	await t.throws(m('sindr555esorhus'), 'Not Found (404)');
+	await t.throwsAsync(ghUser('sindr555esorhus'), 'Not Found (404)');
 });
 
 test('no username given (no arg)', async t => {
-	await t.throws(m(), '`username` required');
+	await t.throwsAsync(ghUser(), 'The `username` argument is required');
 });
 
 test('no username given (empty string)', async t => {
-	await t.throws(m(''), '`username` required');
+	await t.throwsAsync(ghUser(''), 'The `username` argument is required');
 });
 
 test('username given (bad options type)', async t => {
-	await t.throws(m('sindresorhus', 55), '`options` should be an object of gh-got options');
+	await t.throwsAsync(ghUser('sindresorhus', 55), 'The `options` argument should be an object');
 });
 
 test('username given (bad token)', async t => {
-	await t.throws(m('sindresorhus', {token: 'NOT-A-TOKEN'}), 'Bad credentials (401)');
+	await t.throwsAsync(ghUser('sindresorhus', {token: 'NOT-A-TOKEN'}), 'Bad credentials (401)');
 });

@@ -9,15 +9,19 @@ const defaultOptions = {
 
 module.exports = async (username, options = {}) => {
 	if (typeof username !== 'string' || !username) {
-		throw new Error('`username` required');
+		throw new Error('The `username` argument is required');
 	}
+
 	if (typeof options !== 'object') {
-		throw new TypeError('`options` should be an object of gh-got options');
+		throw new TypeError('The `options` argument should be an object');
 	}
+
 	const result = await ghGot(
 		`users/${username}`,
 		ghGot.mergeOptions(defaultOptions, options)
 	);
+
 	delete result.body.gravatar_id;
+
 	return result.body;
 };

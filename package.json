@@ -1,36 +1,36 @@
 {
-  "name": "gh-user",
-  "version": "3.0.0",
-  "description": "Get user info from a GitHub username",
-  "license": "MIT",
-  "repository": "sindresorhus/gh-user",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
-  },
-  "engines": {
-    "node": ">=8"
-  },
-  "scripts": {
-    "test": "xo && ava"
-  },
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "github",
-    "gh",
-    "user",
-    "username",
-    "info",
-    "api"
-  ],
-  "dependencies": {
-    "gh-got": "^8.0.0"
-  },
-  "devDependencies": {
-    "ava": "*",
-    "xo": "*"
-  }
+	"name": "gh-user",
+	"version": "3.0.0",
+	"description": "Get user info from a GitHub username",
+	"license": "MIT",
+	"repository": "sindresorhus/gh-user",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"github",
+		"gh",
+		"user",
+		"username",
+		"info",
+		"api"
+	],
+	"dependencies": {
+		"gh-got": "^8.0.0"
+	},
+	"devDependencies": {
+		"ava": "^1.0.0-rc.1",
+		"xo": "^0.23.0"
+	}
 }
