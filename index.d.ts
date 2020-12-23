@@ -14,6 +14,6 @@ console.log(await ghUser('sindresorhus'));
 //=> {login: 'sindresorhus', id: 170270, …}
 ```
 */
-declare function ghUser(username: string, token?: string): Promise<RestEndpointMethodTypes["users"]["getByUsername"]["response"]>;
+declare function ghUser(username: string, token?: string): Promise<Omit<RestEndpointMethodTypes['users']['getByUsername']['response']['data'], 'gravatar_id'>>;
 
 export = ghUser;
