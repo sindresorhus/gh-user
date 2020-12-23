@@ -27,7 +27,7 @@
 		"api"
 	],
 	"dependencies": {
-		"gh-got": "^8.0.0"
+		"@octokit/rest": "^18.0.12"
 	},
 	"devDependencies": {
 		"ava": "^1.0.0-rc.1",
