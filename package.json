@@ -30,7 +30,7 @@
 		"@octokit/rest": "^18.0.12"
 	},
 	"devDependencies": {
-		"ava": "^1.0.0-rc.1",
+		"ava": "^1.4.1",
 		"xo": "^0.23.0"
 	}
 }

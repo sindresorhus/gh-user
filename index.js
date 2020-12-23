@@ -6,10 +6,6 @@ module.exports = async (username, token) => {
 		throw new Error('The `username` argument is required');
 	}
 
-	if (typeof options !== 'object') {
-		throw new TypeError('The `options` argument should be an object');
-	}
-
 	const octokit = new Octokit({
 		auth: token,
 		userAgent: 'https://github.com/sindresorhus/gh-user'

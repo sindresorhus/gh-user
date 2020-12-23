@@ -12,7 +12,7 @@ test('user exists (empty token string)', async t => {
 });
 
 test('user doesn\'t exist', async t => {
-	await t.throwsAsync(ghUser('sindr555esorhus'), 'Not Found (404)');
+	await t.throwsAsync(ghUser('sindr555esorhus'), 'Not Found');
 });
 
 test('no username given (no arg)', async t => {
@@ -24,5 +24,5 @@ test('no username given (empty string)', async t => {
 });
 
 test('username given (bad token)', async t => {
-	await t.throwsAsync(ghUser('sindresorhus', 'NOT-A-TOKEN'), 'Bad credentials (401)');
+	await t.throwsAsync(ghUser('sindresorhus', 'NOT-A-TOKEN'), 'Bad credentials');
 });
