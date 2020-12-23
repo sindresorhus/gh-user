@@ -13,10 +13,11 @@
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava && tsd"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"keywords": [
 		"github",
@@ -31,6 +32,7 @@
 	},
 	"devDependencies": {
 		"ava": "^1.4.1",
+		"tsd": "^0.14.0",
 		"xo": "^0.23.0"
 	}
 }
