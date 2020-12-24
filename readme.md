@@ -31,7 +31,7 @@ GitHub username.
 
 #### options
 
-Type: `object`
+Type: `Object`
 
 Any [Octokit](https://octokit.github.io/rest.js) option. GitHub [personal access token](https://github.com/settings/tokens/new), for example, pass in:
 
