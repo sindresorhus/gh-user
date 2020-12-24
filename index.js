@@ -1,14 +1,18 @@
 'use strict';
 const {Octokit} = require('@octokit/rest');
 
-module.exports = async (username, token) => {
+module.exports = async (username, options = {}) => {
 	if (typeof username !== 'string' || !username) {
 		throw new Error('The `username` argument is required');
 	}
 
+	if (typeof options !== 'object') {
+		throw new TypeError('The `options` argument should be an object');
+	}
+
 	const octokit = new Octokit({
-		auth: token,
-		userAgent: 'https://github.com/sindresorhus/gh-user'
+		userAgent: 'https://github.com/sindresorhus/gh-user',
+		...options
 	});
 
 	const {data} = await octokit.users.getByUsername({

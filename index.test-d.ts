@@ -4,5 +4,5 @@ import {RestEndpointMethodTypes} from '@octokit/rest';
 import ghUser = require('.');
 
 expectType<Promise<Except<RestEndpointMethodTypes['users']['getByUsername']['response']['data'], 'gravatar_id'>>>(
-	ghUser('sindresorhus', 'deadbeef')
+	ghUser('sindresorhus', {auth: 'deadbeef'})
 );

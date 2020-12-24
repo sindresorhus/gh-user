@@ -29,8 +29,14 @@ Type: `string`
 
 GitHub username.
 
-#### token
+#### options
 
-Type: `string`
+Type: `object`
 
-GitHub [personal access token](https://github.com/settings/tokens/new).
+Any [Octokit](https://octokit.github.io/rest.js) option. GitHub [personal access token](https://github.com/settings/tokens/new), for example, pass in:
+
+```js
+{
+	token: 'YOUR-TOKEN'
+}
+```
