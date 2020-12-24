@@ -1,7 +1,7 @@
-import {RestEndpointMethodTypes} from "@octokit/rest";
+import {RestEndpointMethodTypes} from '@octokit/rest';
 
 /**
-Get user info from a GitHub username
+Get user info from a GitHub username.
 
 @param username - GitHub username.
 @param token - GitHub [personal access token](https://github.com/settings/tokens/new).
