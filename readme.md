@@ -33,7 +33,7 @@ GitHub username.
 
 Type: `Object`
 
-Any [Octokit](https://octokit.github.io/rest.js) option. GitHub [personal access token](https://github.com/settings/tokens/new), for example, pass in:
+Any [Octokit](https://octokit.github.io/rest.js) option. To use a GitHub [personal access token](https://github.com/settings/tokens/new), for example, pass in:
 
 ```js
 {
