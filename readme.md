@@ -19,7 +19,7 @@ console.log(await ghUser('sindresorhus'));
 
 ## API
 
-### ghUser(username, token?)
+### ghUser(username, options?)
 
 Returns a `Promise<Object>` with various [user info](https://developer.github.com/v3/users/#response).
 
