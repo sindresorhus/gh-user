@@ -10,13 +10,14 @@
 		"url": "sindresorhus.com"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=10"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava && tsd"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"keywords": [
 		"github",
@@ -27,10 +28,12 @@
 		"api"
 	],
 	"dependencies": {
-		"gh-got": "^8.0.0"
+		"@octokit/rest": "^18.0.12",
+		"type-fest": "^0.20.2"
 	},
 	"devDependencies": {
-		"ava": "^1.0.0-rc.1",
-		"xo": "^0.23.0"
+		"ava": "^3.14.0",
+		"tsd": "^0.14.0",
+		"xo": "^0.36.1"
 	}
 }

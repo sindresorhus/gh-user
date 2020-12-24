@@ -1,11 +1,5 @@
 'use strict';
-const ghGot = require('gh-got');
-
-const defaultOptions = {
-	headers: {
-		'user-agent': 'https://github.com/sindresorhus/gh-user'
-	}
-};
+const {Octokit} = require('@octokit/rest');
 
 module.exports = async (username, options = {}) => {
 	if (typeof username !== 'string' || !username) {
@@ -16,12 +10,14 @@ module.exports = async (username, options = {}) => {
 		throw new TypeError('The `options` argument should be an object');
 	}
 
-	const result = await ghGot(
-		`users/${username}`,
-		ghGot.mergeOptions(defaultOptions, options)
-	);
+	const octokit = new Octokit({
+		userAgent: 'https://github.com/sindresorhus/gh-user',
+		...options
+	});
 
-	delete result.body.gravatar_id;
+	const {data} = await octokit.users.getByUsername({username});
 
-	return result.body;
+	delete data.gravatar_id;
+
+	return data;
 };
