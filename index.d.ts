@@ -1,4 +1,5 @@
 import {RestEndpointMethodTypes} from '@octokit/rest';
+import {Except} from 'type-fest';
 
 /**
 Get user info from a GitHub username.
@@ -14,6 +15,6 @@ console.log(await ghUser('sindresorhus'));
 //=> {login: 'sindresorhus', id: 170270, …}
 ```
 */
-declare function ghUser(username: string, token?: string): Promise<Omit<RestEndpointMethodTypes['users']['getByUsername']['response']['data'], 'gravatar_id'>>;
+declare function ghUser(username: string, token?: string): Promise<Except<RestEndpointMethodTypes['users']['getByUsername']['response']['data'], 'gravatar_id'>>;
 
 export = ghUser;

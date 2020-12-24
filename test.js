@@ -1,5 +1,5 @@
-import test from 'ava';
-import ghUser from '.';
+const test = require('ava');
+const ghUser = require('.');
 
 test('user exists', async t => {
 	const user = await ghUser('sindresorhus');
@@ -12,17 +12,17 @@ test('user exists (empty token string)', async t => {
 });
 
 test('user doesn\'t exist', async t => {
-	await t.throwsAsync(ghUser('sindr555esorhus'), 'Not Found');
+	await t.throwsAsync(ghUser('sindr555esorhus'), {message: 'Not Found'});
 });
 
 test('no username given (no arg)', async t => {
-	await t.throwsAsync(ghUser(), 'The `username` argument is required');
+	await t.throwsAsync(ghUser(), {message: 'The `username` argument is required'});
 });
 
 test('no username given (empty string)', async t => {
-	await t.throwsAsync(ghUser(''), 'The `username` argument is required');
+	await t.throwsAsync(ghUser(''), {message: 'The `username` argument is required'});
 });
 
 test('username given (bad token)', async t => {
-	await t.throwsAsync(ghUser('sindresorhus', 'NOT-A-TOKEN'), 'Bad credentials');
+	await t.throwsAsync(ghUser('sindresorhus', 'NOT-A-TOKEN'), {message: 'Bad credentials'});
 });

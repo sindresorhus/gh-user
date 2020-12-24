@@ -1,7 +1,8 @@
 import {expectType} from 'tsd';
-import {RestEndpointMethodTypes} from "@octokit/rest";
+import {Except} from 'type-fest';
+import {RestEndpointMethodTypes} from '@octokit/rest';
 import ghUser = require('.');
 
-expectType<Promise<Omit<RestEndpointMethodTypes['users']['getByUsername']['response']['data'], 'gravatar_id'>>>(
+expectType<Promise<Except<RestEndpointMethodTypes['users']['getByUsername']['response']['data'], 'gravatar_id'>>>(
 	ghUser('sindresorhus', 'deadbeef')
 );
