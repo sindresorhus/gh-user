@@ -1,4 +1,4 @@
-# gh-user [![Build Status](https://travis-ci.org/sindresorhus/gh-user.svg?branch=master)](https://travis-ci.org/sindresorhus/gh-user)
+# gh-user
 
 > Get user info from a GitHub username
 
@@ -31,7 +31,7 @@ GitHub username.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 Any [Octokit](https://octokit.github.io/rest.js) option. To use a GitHub [personal access token](https://github.com/settings/tokens/new), for example, pass in:
 
