@@ -15,9 +15,7 @@ module.exports = async (username, options = {}) => {
 		...options
 	});
 
-	const {data} = await octokit.users.getByUsername({
-		username
-	});
+	const {data} = await octokit.users.getByUsername({username});
 
 	delete data.gravatar_id;
 
