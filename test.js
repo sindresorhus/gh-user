@@ -1,5 +1,5 @@
-const test = require('ava');
-const ghUser = require('.');
+import test from 'ava';
+import ghUser from './index.js';
 
 test('user exists', async t => {
 	const user = await ghUser('sindresorhus');

@@ -1,7 +1,6 @@
-'use strict';
-const {Octokit} = require('@octokit/rest');
+import {Octokit} from '@octokit/rest';
 
-module.exports = async (username, options = {}) => {
+export default async function ghUser(username, options = {}) {
 	if (typeof username !== 'string' || !username) {
 		throw new Error('The `username` argument is required');
 	}
@@ -12,7 +11,7 @@ module.exports = async (username, options = {}) => {
 
 	const octokit = new Octokit({
 		userAgent: 'https://github.com/sindresorhus/gh-user',
-		...options
+		...options,
 	});
 
 	const {data} = await octokit.users.getByUsername({username});
@@ -20,4 +19,4 @@ module.exports = async (username, options = {}) => {
 	delete data.gravatar_id;
 
 	return data;
-};
+}

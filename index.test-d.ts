@@ -1,8 +1,7 @@
 import {expectType} from 'tsd';
-import {Except} from 'type-fest';
 import {RestEndpointMethodTypes} from '@octokit/rest';
-import ghUser = require('.');
+import ghUser from './index.js';
 
-expectType<Promise<Except<RestEndpointMethodTypes['users']['getByUsername']['response']['data'], 'gravatar_id'>>>(
-	ghUser('sindresorhus', {auth: 'deadbeef'})
+expectType<Promise<Omit<RestEndpointMethodTypes['users']['getByUsername']['response']['data'], 'gravatar_id'>>>( // eslint-disable-line  @typescript-eslint/ban-types
+	ghUser('sindresorhus', {auth: 'deadbeef'}),
 );
